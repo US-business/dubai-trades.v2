@@ -28,7 +28,7 @@ export const ProductImage = ({
       )}
     >
       <Image
-        src={images?.[0] || "/placeholder.jpg"}
+        src={images?.[0] || "/placeholder-dummy.jpg"}
         alt={imageAlt || productName}
         fill
         className="object-contain transition-transform duration-500 group-hover:scale-110"
