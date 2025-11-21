@@ -120,7 +120,7 @@ const WishlistAccordionMenu = ({ user, wishlist, dictionary, dir }: WishlistAcco
                            onClick={() => router.push('/signin')}
                            className="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 transition-all"
                         >
-                           {dictionary.common.signIn}
+                           {dictionary.common.login}
                         </Button>
                      </div>
                   ) : items.length === 0 ? (

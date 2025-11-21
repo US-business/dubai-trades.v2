@@ -24,17 +24,17 @@ export default function GuestWishlistView({ dir, dictionary }: GuestWishlistView
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-8 max-w-7xl">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Wishlist Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="w-full lg:col-span-2 space-y-4">
             <Card>
               <WishlistHeader 
                 dir={dir} 
                 dictionary={dictionary} 
                 totalItems={totalItems} 
               />
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-4 sm:p-6">
                 {items.map((item, index) => (
                   <WishlistItem
                     key={item.id}
@@ -50,7 +50,7 @@ export default function GuestWishlistView({ dir, dictionary }: GuestWishlistView
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="w-full space-y-4 sm:space-y-6">
             <InfoCard dir={dir} />
             <SignInPromptCard dir={dir} dictionary={dictionary} />
           </div>

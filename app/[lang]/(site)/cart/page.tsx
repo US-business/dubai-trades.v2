@@ -74,10 +74,10 @@ export default async function CartPage({
     <>
       {/* Hydrate client cart store so dropdown matches server cart */}
       <div className="min-h-screen bg-gray-50">
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-8 max-w-7xl">
           {/* Breadcrumbs */}
-          <Breadcrumb className="mb-6">
-            <BreadcrumbList>
+          <Breadcrumb className="mb-4 sm:mb-6">
+            <BreadcrumbList className="text-xs sm:text-sm">
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">{dictionary.common.home}</BreadcrumbLink>
               </BreadcrumbItem>
@@ -88,31 +88,31 @@ export default async function CartPage({
             </BreadcrumbList>
           </Breadcrumb>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Cart Items */}
-            <div className="lg:col-span-2 space-y-4">
+            <div className="w-full lg:col-span-2 space-y-4">
               <Card>
-                <CardHeader>
-                  <CardTitle className={cn("flex items-center justify-between", dir === "rtl" && "flex-row-reverse")}>
-                    <span>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className={cn("flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3", dir === "rtl" && "sm:flex-row-reverse")}>
+                    <span className="text-lg sm:text-xl">
                       {dictionary.cart.title} ({cart?.data?.items.length}{" "}
                       {dictionary.cart.items})
                     </span>
-                    <BackLink dir={dir} className="my-4" />
+                    <BackLink dir={dir} className="w-full sm:w-auto" />
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4 sm:p-6">
                   {user?.id && <CartItems dir={dir} cart={cart} user={{ id: user.id }} dictionary={dictionary} />}
                 </CardContent>
               </Card>
-              <p className="text-sm text-sky-700 text-center my-4 bg-sky-50 p-1 rounded border-sky-500 border">
+              <p className="text-xs sm:text-sm text-sky-700 text-center my-4 bg-sky-50 p-2 sm:p-3 rounded border-sky-500 border">
                 {dictionary.cart.pricesIncludeVAT}
               </p>
               <TrustIndicators dir={dir} dictionary={dictionary} />
             </div>
 
             {/* Order Summary */}
-            <div className="space-y-6">
+            <div className="w-full space-y-6">
               <OrderSummary
                 dir={dir}
                 cart={cart}

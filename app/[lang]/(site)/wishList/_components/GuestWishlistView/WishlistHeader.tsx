@@ -12,13 +12,13 @@ interface WishlistHeaderProps {
 
 export default function WishlistHeader({ dir, dictionary, totalItems }: WishlistHeaderProps) {
   return (
-    <CardHeader>
-      <CardTitle className={cn("flex items-center justify-between", dir === "rtl" && "flex-row-reverse")}>
+    <CardHeader className="p-4 sm:p-6">
+      <CardTitle className={cn("flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-lg sm:text-xl", dir === "rtl" && "sm:flex-row-reverse")}>
         <span className="flex items-center gap-2">
-          <Heart className="w-5 h-5 fill-current text-red-500" />
+          <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-red-500" />
           {dictionary.wishlist.title} ({totalItems} {dictionary.wishlist.items})
         </span>
-        <BackLink dir={dir} />
+        <BackLink dir={dir} className="w-full sm:w-auto" />
       </CardTitle>
     </CardHeader>
   )

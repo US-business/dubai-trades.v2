@@ -68,21 +68,21 @@ export default function CheckoutContent({
 
     return (
         <form action={handleSubmit}>
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-8">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-4 sm:py-8">
+                <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                    <div className="text-center mb-6 sm:mb-8">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
                             {dir === 'rtl' ? 'إتمام الطلب' : 'Checkout'}
                         </h1>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-sm sm:text-base lg:text-lg">
                             {dir === 'rtl' ? 'أكمل بياناتك لإنهاء عملية الشراء' : 'Complete your details to finish your purchase'}
                         </p>
                     </div>
 
-                    <div className="lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-16">
+                    <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-x-8 xl:gap-x-12">
                         {/* Main Form */}
-                        <div className="lg:col-span-7">
-                            <div className="space-y-6">
+                        <div className="w-full lg:col-span-7">
+                            <div className="space-y-4 sm:space-y-6">
                                 <ContactInformation dir={dir} />
                                 <ShippingAddress dir={dir} />
                                 <ShippingMethod 
@@ -95,8 +95,8 @@ export default function CheckoutContent({
                         </div>
 
                         {/* Order Summary */}
-                        <div className="mt-10 lg:mt-0 lg:col-span-5">
-                            <div className="space-y-6">
+                        <div className="w-full lg:col-span-5">
+                            <div className="space-y-4 sm:space-y-6">
                                 <AppliedCoupon 
                                     coupons={couponsDB ?? []} 
                                     dir={dir} 

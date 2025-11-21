@@ -1,7 +1,6 @@
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { type Locale } from "@/lib/i18n/i18n-config";
 import { FAQClient } from "./_components/FAQClient";
-
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
   const resolvedParams = await params;
 

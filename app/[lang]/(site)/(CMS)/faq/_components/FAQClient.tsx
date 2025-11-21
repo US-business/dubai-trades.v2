@@ -82,6 +82,7 @@ export function FAQClient({ dictionary }: FAQClientProps) {
 
   return (
     <div className="container mx-auto py-10 px-4">
+
       <HeroSection
         dictionary={dictionary}
         searchTerm={searchTerm}

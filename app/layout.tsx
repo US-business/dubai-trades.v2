@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister"
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   authors: [{ name: companyInfo.nameEn }],
   creator: companyInfo.nameEn,
   publisher: companyInfo.nameEn,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://dubai-trades.vercel.app'),
   alternates: {
     canonical: '/',
     languages: {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_SA",
     alternateLocale: ["en_US"],
-    url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://dubai-trades.vercel.app',
     siteName: "متجرك الإلكتروني",
     title: "متجرك الإلكتروني - تسوق أفضل المنتجات",
     description: "متجر إلكتروني شامل يوفر مجموعة متنوعة من المنتجات عالية الجودة",

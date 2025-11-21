@@ -59,57 +59,67 @@ const CartItems = ({ user, dir, cart, dictionary }: CartItemProps) => {
 
                 return (
                     <div key={item.id}>
-                        <div className={cn("flex items-center space-x-4", dir === "rtl" && "space-x-reverse")}>
-                            <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden">
-                                {item.product.images?.[0] ? (
-                                    <img
-                                        src={item.product.images[0]}
-                                        alt={dir === "rtl" ? item.product.nameAr : item.product.nameEn}
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                                        <ShoppingBag className="h-8 w-8 text-gray-400" />
-                                    </div>
-                                )}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <h3 className="font-medium text-gray-900 truncate">
-                                    {dir === "rtl" ? item.product.nameAr : item.product.nameEn}
-                                </h3>
-                                <div className={cn("flex items-center gap-2 mt-1 flex-wrap", dir === "rtl" && "space-x-reverse")}>
-                                    <span className="font-bold text-primary">${finalPrice.toFixed(2)}</span>
-                                    {item.product.discountType !== 'none' && discountValue > 0 && (
-                                        <span className="text-sm text-gray-500 line-through">${itemPrice.toFixed(2)}</span>
-                                    )}
-                                    {/* ✅ Stock status badges */}
-                                    {isOutOfStock && (
-                                        <Badge variant="destructive" className="text-xs">
-                                            {dir === "rtl" ? "نفذت الكمية" : "Out of Stock"}
-                                        </Badge>
-                                    )}
-                                    {!isOutOfStock && isLowStock && (
-                                        <Badge variant="secondary" className="text-xs bg-yellow-100 text-yellow-800 border-yellow-300">
-                                            {dir === "rtl" ? `متوفر ${availableQty} فقط` : `Only ${availableQty} left`}
-                                        </Badge>
+                        <div className={cn(
+                            "flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4",
+                            dir === "rtl" && "sm:space-x-reverse"
+                        )}>
+                            {/* Product Image & Info */}
+                            <div className="flex items-center gap-3 w-full sm:w-auto sm:flex-1">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    {item.product.images?.[0] ? (
+                                        <img
+                                            src={item.product.images[0]}
+                                            alt={dir === "rtl" ? item.product.nameAr : item.product.nameEn}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                                            <ShoppingBag className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400" />
+                                        </div>
                                     )}
                                 </div>
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="font-medium text-gray-900 truncate text-sm sm:text-base">
+                                        {dir === "rtl" ? item.product.nameAr : item.product.nameEn}
+                                    </h3>
+                                    <div className={cn("flex items-center gap-2 mt-1 flex-wrap", dir === "rtl" && "space-x-reverse")}>
+                                        <span className="font-bold text-primary text-sm sm:text-base">${finalPrice.toFixed(2)}</span>
+                                        {item.product.discountType !== 'none' && discountValue > 0 && (
+                                            <span className="text-xs sm:text-sm text-gray-500 line-through">${itemPrice.toFixed(2)}</span>
+                                        )}
+                                        {/* ✅ Stock status badges */}
+                                        {isOutOfStock && (
+                                            <Badge variant="destructive" className="text-[10px] sm:text-xs">
+                                                {dir === "rtl" ? "نفذت الكمية" : "Out of Stock"}
+                                            </Badge>
+                                        )}
+                                        {!isOutOfStock && isLowStock && (
+                                            <Badge variant="secondary" className="text-[10px] sm:text-xs bg-yellow-100 text-yellow-800 border-yellow-300">
+                                                {dir === "rtl" ? `متوفر ${availableQty} فقط` : `Only ${availableQty} left`}
+                                            </Badge>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
-                            <CartQuantity
-                                item={item}
-                                dir={dir}
-                            />
-                            <div className="text-right">
-                                <p className="font-bold">${(finalPrice * item.quantity).toFixed(2)}</p>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handleRemoveItem(item.id)}
-                                    disabled={isUpdatingThis}
-                                    className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                                >
-                                    <Trash2 className="w-4 h-4" />
-                                </Button>
+
+                            {/* Quantity & Actions */}
+                            <div className="flex items-center justify-between w-full sm:w-auto gap-3 sm:gap-4">
+                                <CartQuantity
+                                    item={item}
+                                    dir={dir}
+                                />
+                                <div className={cn("text-right flex items-center gap-2", dir === "rtl" && "flex-row-reverse")}>
+                                    <p className="font-bold text-sm sm:text-base">${(finalPrice * item.quantity).toFixed(2)}</p>
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => handleRemoveItem(item.id)}
+                                        disabled={isUpdatingThis}
+                                        className="text-red-600 hover:text-red-700 hover:bg-red-50 h-8 w-8 p-0"
+                                    >
+                                        <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                         {index < cart.data.items.length - 1 && <Separator className="mt-4" />}
